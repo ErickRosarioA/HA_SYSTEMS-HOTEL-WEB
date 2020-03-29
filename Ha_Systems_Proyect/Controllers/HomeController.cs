@@ -10,8 +10,6 @@ namespace Ha_Systems_Proyect.Controllers
     {
         public ActionResult Home()
         {
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-
             @ViewBag.Page = "Inicio";
             return View();
         }
