@@ -13,6 +13,7 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            Session["Data_User"] = "";
             return View();
         }
 
@@ -26,6 +27,7 @@ namespace Ha_Systems_Proyect.Controllers
                 {
                     if (loginDataModel.Usuario1 == item.Usuario1 && loginDataModel.Passwords == item.Passwords)
                     {
+                        Session["Data_User"] = item;
                         return RedirectToAction("Home", "Home");
                     }
                 }

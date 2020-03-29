@@ -11,7 +11,12 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Cliente
         public ActionResult Cliente()
         {
-            @ViewBag.Page = "Clientes";
+            var userCredential = Session["Data_User"];
+            ViewBag.Credential = userCredential;
+            if (userCredential == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }

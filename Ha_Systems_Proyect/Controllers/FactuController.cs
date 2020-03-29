@@ -11,7 +11,12 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Factu
         public ActionResult Facturacion()
         {
-            @ViewBag.Page = "Facturacion";
+            var userCredential = Session["Data_User"];
+            ViewBag.Credential = userCredential;
+            if (userCredential == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }

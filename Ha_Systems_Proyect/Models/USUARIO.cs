@@ -11,7 +11,8 @@ namespace Ha_Systems_Proyect.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class USUARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,24 @@ namespace Ha_Systems_Proyect.Models
         }
     
         public int Id_usuario { get; set; }
+        [Display(Name = "Usuario")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
         public string Usuario1 { get; set; }
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
         public string Nombre { get; set; }
+        [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(100, ErrorMessage = "Minimo 6 caracteres",
+              MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public string Passwords { get; set; }
         public string Tipo { get; set; }
+        [Display(Name = " Verificacion Contraseña")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(100, ErrorMessage = "Minimo 6 caracteres",
+              MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public string Password_V { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
