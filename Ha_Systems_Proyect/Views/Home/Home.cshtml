@@ -5,3 +5,19 @@
 <div style="text-align:center;">
     <img src="@Url.Content("~/Content/img/ha2.png")" style="height:450px;opacity:0.1;" />
 </div>
+
+
+
+@section scripts{
+    <script>
+        if (history.forward()) {
+            history.replace(history.forward());
+        }
+        window.history.forward();
+        window.location.hash = "no-back-button";
+        window.location.hash = "Again-No-back-button" //chrome
+        window.onhashchange = function () { window.location.hash = ""; }
+
+    </script>
+
+}

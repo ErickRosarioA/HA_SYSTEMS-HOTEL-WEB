@@ -11,7 +11,12 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Habita
         public ActionResult Habitacion()
         {
-            @ViewBag.Page = "Habitaciones";
+            var userCredential = Session["Data_User"];
+            ViewBag.Credential = userCredential;
+            if (userCredential == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }

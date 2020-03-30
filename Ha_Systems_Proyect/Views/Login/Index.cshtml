@@ -1,10 +1,10 @@
-﻿@model Ha_Systems_Proyect.Models.LoginModel
+﻿@model Ha_Systems_Proyect.Models.USUARIO
 
 @{
- 
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Login_Layout.cshtml";
 }
+
 
 <div class="sectionLogin">
     <div style="margin-bottom:0; padding:0; text-align:center;">
@@ -13,57 +13,53 @@
 
     @using (Html.BeginForm("Index", "Login", FormMethod.Post))
     {
-        <div>
-            <h2 style="margin-top:0; padding-top:0; text-align:center;">Iniciar Sesiòn</h2>
-            <br />
-            @Html.LabelFor(x => x.Email, new { @class = "" })
-            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", autofocus = "autofocus" })
-            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
-            <br />
+<div>
 
-            @Html.LabelFor(x => x.Password)
-            <div class="input-group">
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-                <span class="input-group-btn">
-                    <button id="verPassword" class="btn btn-default" type="button">
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                    </button>
-                </span>
-            </div>
-            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
-            <br />
-            <div style="margin-top:4%;" class="checkbox-inline pull-left">
-                @Html.CheckBoxFor(x => x.RememberMe, new { @class = "" })
-                @Html.LabelFor(x => x.RememberMe, new { @class = "" })
-            </div>
-            <div style="margin-top:4%;" class="checkbox-inline pull-right">
-                <a>Olvide la   Contraseña </a>
-            </div>
-            <br />
-            <br />
-            <button style="width:100%; height:60px; background-color:#3399FF; border-color:#3399FF;" class="btn btn-primary" type="submit">
-                Iniciar
+    <h2 style="margin-top:0; padding-top:0; text-align:center;">Iniciar Sesiòn</h2>
+     <div style="margin-top:1%; text-align:center; color:red;">
+          @ViewBag.LoginAcces     
+    </div>
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <label>Usuario:</label>
+    @Html.EditorFor(model => model.Usuario1, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Usuario1, "", new { @class = "text-danger" })
+
+    <br />
+
+    <label>Contraseña:</label>
+    <div class="input-group">
+        @Html.PasswordFor(model => model.Passwords, new { @class = "form-control" })
+        <span class="input-group-btn">
+            <button id="verPassword" class="btn btn-default" type="button">
+                <i class="glyphicon glyphicon-eye-open"></i>
             </button>
-
-
-            <br />
-        </div>
+        </span>
+    </div>
+    @Html.ValidationMessageFor(model => model.Passwords, "", new { @class = "text-danger" })
+    <div style="margin-top:1%; text-align:center; text-decoration-line:underline;">
+        <a>Olvide la   Contraseña </a>
+    </div>
+    <br />
+    <button style="width:100%; height:60px; background-color:#3399FF; border-color:#3399FF;" class="btn btn-primary" type="submit">
+        Iniciar
+    </button>
+    <br />
+</div>
     }
-
-
 </div>
 
 @section scripts {
     <script>
         window.location.hash = "no-back-button";
-        window.location.hash="Again-No-back-button";//esta linea es necesaria para chrome
-        window.onhashchange=function(){window.location.hash="";}
+        window.location.hash = "Again-No-back-button";//esta linea es necesaria para chrome
+        window.onhashchange = function () { window.location.hash = ""; }
         $('#verPassword').on('mousedown', function () {
-            $('#Password').attr("type", "text");
+            $('#Passwords').attr("type", "text");
         });
 
         $('#verPassword').on('mouseup mouseleave', function () {
-            $('#Password').attr("type", "password");
+            $('#Passwords').attr("type", "password");
         });
     </script>
 }

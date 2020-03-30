@@ -1,0 +1,70 @@
+﻿@model Ha_Systems_Proyect.Models.USUARIO
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Login_Layout.cshtml";
+}
+
+<div class="sectionLogin">
+    @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+    {
+<div>
+    <h2 style="margin-top:0; padding-top:0; text-align:center;">Registro</h2>
+    <div style="margin-top:1%; text-align:center; color:red;">
+        @ViewBag.LoginAcces
+    </div>
+    <br/>
+    <label>Nombre Completo:</label>
+    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+    <br />
+    <label>Usuario:</label>
+    @Html.EditorFor(model => model.Usuario1, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Usuario1, "", new { @class = "text-danger" })
+    <br />
+    <select id="Tipo" name="Tipo" class="form-control">
+        <option value="Usuario">Tipo de Usuario</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Usuario">Usuario</option>
+    </select>
+    <br />
+    <label>Contraseña:</label>
+    <div class="input-group">
+        @Html.PasswordFor(model => model.Passwords, new { @class = "form-control" })
+        <span class="input-group-btn">
+            <button id="verPassword" class="btn btn-default" type="button">
+                <i class="glyphicon glyphicon-eye-open"></i>
+            </button>
+        </span>
+    </div>
+    @Html.ValidationMessageFor(model => model.Passwords, "", new { @class = "text-danger" })
+    <br />
+    <label>Verificar Contraseña:</label>
+    <input type="password" class="form-control" id="Password_V" name="Password_V" />
+    @Html.ValidationMessageFor(model => model.Password_V, "", new { @class = "text-danger" })
+    <br />
+    <br/>
+    <button style="width:45%; height:40px; background-color:#3399FF; border-color:#3399FF;" class="btn btn-primary" type="submit">
+        Registrar
+    </button>
+
+    <a href="@Url.Action("Index","Login")" style="float:right; width:45%; height:40px; background-color:red; border-color:red;" class="btn btn-primary">
+        Cancel
+    </a>
+    <br />
+</div>
+     }
+</div>
+
+@section scripts {
+    <script>
+        $('#verPassword').on('mousedown', function () {
+            $('#Passwords').attr("type", "text");
+        });
+
+        $('#verPassword').on('mouseup mouseleave', function () {
+            $('#Passwords').attr("type", "password");
+        });
+    </script>
+}
+
