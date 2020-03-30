@@ -35,6 +35,7 @@ namespace Ha_Systems_Proyect.Models
         [Required(ErrorMessage = "Este campo es requerido.")]
         [StringLength(11, ErrorMessage = "No cumple con requisisto de cedula",
               MinimumLength = 11)]
+        [DataType(DataType.PhoneNumber)]
         public Nullable<int> Cedula { get; set; }
         [Display(Name = "Correo electrónico")]
         [Required(ErrorMessage = "Este campo es requerido.")]
