@@ -13,10 +13,10 @@ namespace Ha_Systems_Proyect.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HA_SYSTEMSEntities1 : DbContext
+    public partial class HA_SYSTEMSEntities3 : DbContext
     {
-        public HA_SYSTEMSEntities1()
-            : base("name=HA_SYSTEMSEntities1")
+        public HA_SYSTEMSEntities3()
+            : base("name=HA_SYSTEMSEntities3")
         {
         }
     
@@ -25,13 +25,13 @@ namespace Ha_Systems_Proyect.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CLIENTE> CLIENTEs { get; set; }
+        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<CUENTA_POR_COBRAR> CUENTA_POR_COBRAR { get; set; }
-        public virtual DbSet<FACTURA> FACTURAs { get; set; }
-        public virtual DbSet<HABITACION> HABITACIONs { get; set; }
-        public virtual DbSet<HOSPEDAJE> HOSPEDAJEs { get; set; }
-        public virtual DbSet<INVENTARIO> INVENTARIOs { get; set; }
+        public virtual DbSet<FACTURA> FACTURA { get; set; }
+        public virtual DbSet<HABITACION> HABITACION { get; set; }
+        public virtual DbSet<HOSPEDAJE> HOSPEDAJE { get; set; }
+        public virtual DbSet<INVENTARIO> INVENTARIO { get; set; }
         public virtual DbSet<MONITOR_SESSION> MONITOR_SESSION { get; set; }
-        public virtual DbSet<USUARIO> USUARIOs { get; set; }
+        public virtual DbSet<USUARIO> USUARIO { get; set; }
     }
 }

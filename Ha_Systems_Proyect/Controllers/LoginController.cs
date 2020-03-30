@@ -9,7 +9,7 @@ namespace Ha_Systems_Proyect.Controllers
 {
     public class LoginController : Controller
     {
-        private HA_SYSTEMSEntities1 Modelo_Generate = new HA_SYSTEMSEntities1();
+        private HA_SYSTEMSEntities3 Modelo_Generate = new HA_SYSTEMSEntities3();
         // GET: Login
         public ActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace Ha_Systems_Proyect.Controllers
 
             if (loginDataModel.Passwords!="" && loginDataModel.Usuario1!="" )
             {
-                foreach (var item in Modelo_Generate.USUARIOs.ToList())
+                foreach (var item in Modelo_Generate.USUARIO.ToList())
                 {
                     if (loginDataModel.Usuario1 == item.Usuario1 && loginDataModel.Passwords == item.Passwords)
                     {
@@ -55,7 +55,7 @@ namespace Ha_Systems_Proyect.Controllers
                 if (registerData.Passwords == registerData.Password_V)
                 {
 
-                    Modelo_Generate.USUARIOs.Add(registerData);
+                    Modelo_Generate.USUARIO.Add(registerData);
                     Modelo_Generate.SaveChanges();
                     return RedirectToAction("Index", "Login");
 

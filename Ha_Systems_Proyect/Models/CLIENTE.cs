@@ -18,7 +18,7 @@ namespace Ha_Systems_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CLIENTE()
         {
-            this.HOSPEDAJEs = new HashSet<HOSPEDAJE>();
+            this.HOSPEDAJE = new HashSet<HOSPEDAJE>();
         }
     
         public int Id_cliente { get; set; }
@@ -35,8 +35,7 @@ namespace Ha_Systems_Proyect.Models
         [Required(ErrorMessage = "Este campo es requerido.")]
         [StringLength(11, ErrorMessage = "No cumple con requisisto de cedula",
               MinimumLength = 11)]
-        [DataType(DataType.PhoneNumber)]
-        public Nullable<int> Cedula { get; set; }
+        public string Cedula { get; set; }
         [Display(Name = "Correo electrónico")]
         [Required(ErrorMessage = "Este campo es requerido.")]
         [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*",
@@ -50,8 +49,7 @@ namespace Ha_Systems_Proyect.Models
         [Display(Name = "Ciudad")]
         [Required(ErrorMessage = "Este campo es requerido.")]
         public string Ciudad { get; set; }
-    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOSPEDAJE> HOSPEDAJEs { get; set; }
+        public virtual ICollection<HOSPEDAJE> HOSPEDAJE { get; set; }
     }
 }

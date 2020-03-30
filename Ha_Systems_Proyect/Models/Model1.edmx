@@ -12,8 +12,8 @@
           <Property Name="Id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Apellido" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Celular" Type="varchar" MaxLength="15" />
-          <Property Name="Cedula" Type="int" />
+          <Property Name="Celular" Type="varchar" MaxLength="12" />
+          <Property Name="Cedula" Type="varchar" MaxLength="11" />
           <Property Name="Correo" Type="varchar" MaxLength="40" />
           <Property Name="Direccion" Type="varchar" MaxLength="50" />
           <Property Name="Ciudad" Type="varchar" MaxLength="50" />
@@ -87,8 +87,8 @@
           <Property Name="Id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usuario" Type="varchar" MaxLength="40" />
           <Property Name="Nombre" Type="varchar" MaxLength="40" />
+          <Property Name="Tipo" Type="varchar" MaxLength="49" />
           <Property Name="Passwords" Type="varchar" MaxLength="40" />
-          <Property Name="Tipo" Type="varchar" MaxLength="43" />
           <Property Name="Password_V" Type="varchar" MaxLength="34" />
         </EntityType>
         <Association Name="Cliente_fk">
@@ -193,12 +193,12 @@
           <Property Name="Id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Celular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Cedula" Type="Int32" />
+          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="HOSPEDAJEs" Relationship="Self.Cliente_fk" FromRole="CLIENTE" ToRole="HOSPEDAJE" />
+          <NavigationProperty Name="HOSPEDAJE" Relationship="Self.Cliente_fk" FromRole="CLIENTE" ToRole="HOSPEDAJE" />
         </EntityType>
         <EntityType Name="CUENTA_POR_COBRAR">
           <Key>
@@ -231,7 +231,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Estado_habitacion" Type="Int32" />
           <Property Name="Disponibilidad" Type="Boolean" />
-          <NavigationProperty Name="HOSPEDAJEs" Relationship="Self.Habitacion_fk" FromRole="HABITACION" ToRole="HOSPEDAJE" />
+          <NavigationProperty Name="HOSPEDAJE" Relationship="Self.Habitacion_fk" FromRole="HABITACION" ToRole="HOSPEDAJE" />
         </EntityType>
         <EntityType Name="HOSPEDAJE">
           <Key>
@@ -243,7 +243,7 @@
           <Property Name="Fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Fecha_fin" Type="DateTime" Precision="0" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.Cliente_fk" FromRole="HOSPEDAJE" ToRole="CLIENTE" />
-          <NavigationProperty Name="FACTURAs" Relationship="Self.Hospedaje_fK" FromRole="HOSPEDAJE" ToRole="FACTURA" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.Hospedaje_fK" FromRole="HOSPEDAJE" ToRole="FACTURA" />
           <NavigationProperty Name="HABITACION" Relationship="Self.Habitacion_fk" FromRole="HOSPEDAJE" ToRole="HABITACION" />
         </EntityType>
         <EntityType Name="INVENTARIO">
@@ -277,8 +277,8 @@
           <Property Name="Id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Usuario1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="49" FixedLength="false" Unicode="false" />
           <Property Name="Passwords" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="String" MaxLength="43" FixedLength="false" Unicode="false" />
           <Property Name="Password_V" Type="String" MaxLength="34" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MONITOR_SESSION" Relationship="Self.Usuario_fK" FromRole="USUARIO" ToRole="MONITOR_SESSION" />
         </EntityType>
@@ -342,33 +342,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HA_SYSTEMSEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CLIENTEs" EntityType="Self.CLIENTE" />
+        <EntityContainer Name="HA_SYSTEMSEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="CUENTA_POR_COBRAR" EntityType="Self.CUENTA_POR_COBRAR" />
-          <EntitySet Name="FACTURAs" EntityType="Self.FACTURA" />
-          <EntitySet Name="HABITACIONs" EntityType="Self.HABITACION" />
-          <EntitySet Name="HOSPEDAJEs" EntityType="Self.HOSPEDAJE" />
-          <EntitySet Name="INVENTARIOs" EntityType="Self.INVENTARIO" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
+          <EntitySet Name="HABITACION" EntityType="Self.HABITACION" />
+          <EntitySet Name="HOSPEDAJE" EntityType="Self.HOSPEDAJE" />
+          <EntitySet Name="INVENTARIO" EntityType="Self.INVENTARIO" />
           <EntitySet Name="MONITOR_SESSION" EntityType="Self.MONITOR_SESSION" />
-          <EntitySet Name="USUARIOs" EntityType="Self.USUARIO" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <AssociationSet Name="Cliente_fk" Association="Self.Cliente_fk">
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
-            <End Role="HOSPEDAJE" EntitySet="HOSPEDAJEs" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="HOSPEDAJE" EntitySet="HOSPEDAJE" />
           </AssociationSet>
           <AssociationSet Name="Factura_fK" Association="Self.Factura_fK">
-            <End Role="FACTURA" EntitySet="FACTURAs" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
             <End Role="CUENTA_POR_COBRAR" EntitySet="CUENTA_POR_COBRAR" />
           </AssociationSet>
           <AssociationSet Name="Hospedaje_fK" Association="Self.Hospedaje_fK">
-            <End Role="HOSPEDAJE" EntitySet="HOSPEDAJEs" />
-            <End Role="FACTURA" EntitySet="FACTURAs" />
+            <End Role="HOSPEDAJE" EntitySet="HOSPEDAJE" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
           <AssociationSet Name="Habitacion_fk" Association="Self.Habitacion_fk">
-            <End Role="HABITACION" EntitySet="HABITACIONs" />
-            <End Role="HOSPEDAJE" EntitySet="HOSPEDAJEs" />
+            <End Role="HABITACION" EntitySet="HABITACION" />
+            <End Role="HOSPEDAJE" EntitySet="HOSPEDAJE" />
           </AssociationSet>
           <AssociationSet Name="Usuario_fK" Association="Self.Usuario_fK">
-            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="MONITOR_SESSION" EntitySet="MONITOR_SESSION" />
           </AssociationSet>
         </EntityContainer>
@@ -377,8 +377,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HA_SYSTEMSModelStoreContainer" CdmEntityContainer="HA_SYSTEMSEntities1">
-          <EntitySetMapping Name="CLIENTEs">
+        <EntityContainerMapping StorageEntityContainer="HA_SYSTEMSModelStoreContainer" CdmEntityContainer="HA_SYSTEMSEntities3">
+          <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="Id_cliente" ColumnName="Id_cliente" />
@@ -402,7 +402,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FACTURAs">
+          <EntitySetMapping Name="FACTURA">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.FACTURA">
               <MappingFragment StoreEntitySet="FACTURA">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
@@ -414,7 +414,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HABITACIONs">
+          <EntitySetMapping Name="HABITACION">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.HABITACION">
               <MappingFragment StoreEntitySet="HABITACION">
                 <ScalarProperty Name="Id_habitacion" ColumnName="Id_habitacion" />
@@ -424,7 +424,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HOSPEDAJEs">
+          <EntitySetMapping Name="HOSPEDAJE">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.HOSPEDAJE">
               <MappingFragment StoreEntitySet="HOSPEDAJE">
                 <ScalarProperty Name="Id_hospedaje" ColumnName="Id_hospedaje" />
@@ -435,7 +435,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="INVENTARIOs">
+          <EntitySetMapping Name="INVENTARIO">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.INVENTARIO">
               <MappingFragment StoreEntitySet="INVENTARIO">
                 <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
@@ -460,14 +460,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="USUARIOs">
+          <EntitySetMapping Name="USUARIO">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
                 <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
                 <ScalarProperty Name="Password_V" ColumnName="Password_V" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -486,7 +486,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

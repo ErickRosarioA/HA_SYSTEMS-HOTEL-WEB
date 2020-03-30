@@ -17,7 +17,7 @@ namespace Ha_Systems_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HABITACION()
         {
-            this.HOSPEDAJEs = new HashSet<HOSPEDAJE>();
+            this.HOSPEDAJE = new HashSet<HOSPEDAJE>();
         }
     
         public int Id_habitacion { get; set; }
@@ -26,6 +26,6 @@ namespace Ha_Systems_Proyect.Models
         public Nullable<bool> Disponibilidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOSPEDAJE> HOSPEDAJEs { get; set; }
+        public virtual ICollection<HOSPEDAJE> HOSPEDAJE { get; set; }
     }
 }

@@ -34,9 +34,12 @@
                 </div>
                 <ul class="nav navbar-nav pull-right" style="font-weight:bold;">
                     <li>@Html.ActionLink("Inicio", "Home", "Home")</li>
-                    @if (ViewBag.Credential.Tipo == "Administrador")
+                    @if (ViewBag.Credential.Tipo != null)
                     {
-                        <li>@Html.ActionLink("Registrar Usuario", "Register", "Login")</li>
+                        if (ViewBag.Credential.Tipo == "Administrador")
+                        {
+                            <li>@Html.ActionLink("Registrar Usuario", "Register", "Login")</li>
+                        }
                     }
                     <li>@Html.ActionLink("Cliente", "Cliente", "Cliente")</li>
                     <li>@Html.ActionLink("Hospedaje", "Hospedaje", "Hospe")</li>

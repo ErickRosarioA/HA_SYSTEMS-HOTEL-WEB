@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Ha_Systems_Proyect.Models.CLIENTE>
+
+@{
+    ViewBag.Title = "ListCliente";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<h4 style="text-align:center; font-weight:bold;">Agregar Cliente</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudad)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_cliente }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_cliente }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_cliente })
+            </td>
+        </tr>
+    }
+
+</table>

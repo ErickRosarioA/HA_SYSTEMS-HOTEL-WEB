@@ -17,7 +17,7 @@ namespace Ha_Systems_Proyect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HOSPEDAJE()
         {
-            this.FACTURAs = new HashSet<FACTURA>();
+            this.FACTURA = new HashSet<FACTURA>();
         }
     
         public int Id_hospedaje { get; set; }
@@ -28,7 +28,7 @@ namespace Ha_Systems_Proyect.Models
     
         public virtual CLIENTE CLIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FACTURA> FACTURAs { get; set; }
+        public virtual ICollection<FACTURA> FACTURA { get; set; }
         public virtual HABITACION HABITACION { get; set; }
     }
 }

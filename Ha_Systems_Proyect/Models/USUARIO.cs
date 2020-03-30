@@ -20,7 +20,7 @@ namespace Ha_Systems_Proyect.Models
         {
             this.MONITOR_SESSION = new HashSet<MONITOR_SESSION>();
         }
-    
+
         public int Id_usuario { get; set; }
         [Display(Name = "Usuario")]
         [Required(ErrorMessage = "Este campo es requerido.")]
@@ -31,17 +31,17 @@ namespace Ha_Systems_Proyect.Models
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "Este campo es requerido.")]
         [StringLength(100, ErrorMessage = "Minimo 6 caracteres",
-              MinimumLength = 6)]
+        MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Passwords { get; set; }
         public string Tipo { get; set; }
         [Display(Name = " Verificacion Contraseña")]
         [Required(ErrorMessage = "Este campo es requerido.")]
         [StringLength(100, ErrorMessage = "Minimo 6 caracteres",
-              MinimumLength = 6)]
+            MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password_V { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MONITOR_SESSION> MONITOR_SESSION { get; set; }
     }
