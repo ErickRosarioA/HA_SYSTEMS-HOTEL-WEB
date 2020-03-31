@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Ha_Systems_Proyect.Models
 {
@@ -18,7 +14,7 @@ namespace Ha_Systems_Proyect.Models
 
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "Este campo es requerido.")]
-        [StringLength(100,ErrorMessage = "Minimo 6 caracteres",
+        [StringLength(100, ErrorMessage = "Minimo 6 caracteres",
                       MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }

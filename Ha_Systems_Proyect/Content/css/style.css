@@ -19,6 +19,7 @@ table, td, th {
 .sectionFormR {
     width: 63%;
     float: right;
+    padding:1%;
     position: relative;
     border: solid 1px black;
     border-radius: 10px;

@@ -1,8 +1,5 @@
 ﻿using Ha_Systems_Proyect.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ha_Systems_Proyect.Controllers
@@ -21,7 +18,7 @@ namespace Ha_Systems_Proyect.Controllers
         public ActionResult Index(USUARIO loginDataModel)
         {
 
-            if (loginDataModel.Passwords!="" && loginDataModel.Usuario1!="" )
+            if (loginDataModel.Passwords != "" && loginDataModel.Usuario1 != "")
             {
                 foreach (var item in Modelo_Generate.USUARIO.ToList())
                 {
@@ -43,7 +40,7 @@ namespace Ha_Systems_Proyect.Controllers
 
         public ActionResult Register()
         {
-         
+
             return View();
         }
 

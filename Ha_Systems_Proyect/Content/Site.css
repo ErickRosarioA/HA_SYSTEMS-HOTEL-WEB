@@ -22,14 +22,6 @@ select,
 textarea {
     max-width: 380px;
 }
-table {
-    border-collapse: collapse;
-    background-color: white;
-}
-
-table, td, th {
-    border: 1px solid black;
-}
 .footer {
     min-height: 30px;
     position: fixed;

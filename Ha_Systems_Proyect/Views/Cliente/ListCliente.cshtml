@@ -5,15 +5,12 @@
     Layout = "~/Views/Shared/_CleanLayout.cshtml";
 }
 
-<h4 style="text-align:center; font-weight:bold;">Agregar Cliente</h4>
+<h4 style="text-align:center; font-weight:bold;">Listado de Clientes</h4>
 
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apellido)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Celular)
@@ -38,8 +35,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Apellido)
             </td>
             <td>
@@ -58,9 +53,21 @@
                 @Html.DisplayFor(modelItem => item.Ciudad)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_cliente }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id_cliente }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id_cliente })
+
+                <a href="@Url.Action("EditCliente","Cliente",new { idC = item.Id_cliente })">
+
+                        <img src="@Url.Content("~/Content/img/edit.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+                    <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+                </a>
+
+                <a href="@Url.Action("DeleteCliente","Cliente",new { idC = item.Id_cliente })">
+   
+                        <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+      
+                    <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+                </a>
+
             </td>
         </tr>
     }
