@@ -32,7 +32,7 @@ namespace Ha_Systems_Proyect.Controllers
                     }
                 }
 
-                ViewBag.LoginAcces = "Usuario No En contrado";
+                ViewBag.LoginAcces = "Usuario no encontrado";
                 return View();
             }
             else
@@ -63,7 +63,7 @@ namespace Ha_Systems_Proyect.Controllers
                 else
                 {
 
-                    ViewBag.LoginAcces = "Contraseñas no Coinciden";
+                    ViewBag.LoginAcces = "La contraseña no coincide";
                     return View();
                 }
 
