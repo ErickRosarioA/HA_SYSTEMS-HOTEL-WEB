@@ -8,6 +8,32 @@
     -moz-box-shadow: 7px 6px 28px 1px rgba(0,0,0,0.75);
     box-shadow: 7px 6px 28px 1px rgba(0,0,0,0.75);
 }
+table {
+    border-collapse: collapse;
+    background-color:white;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+.sectionFormR {
+    width: 63%;
+    float: right;
+    padding:1%;
+    position: relative;
+    border: solid 1px black;
+    border-radius: 10px;
+    height: 487px;
+}
+
+.sectionFormL {
+    width: 35%;
+    border: solid 1px black;
+    border-radius: 10px;
+    height: 487px;
+    float: left;
+    position: relative;
+}
 .vl {
     border-left: 1px solid black;
     height: 20px;

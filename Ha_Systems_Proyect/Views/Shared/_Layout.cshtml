@@ -34,13 +34,20 @@
                 </div>
                 <ul class="nav navbar-nav pull-right" style="font-weight:bold;">
                     <li>@Html.ActionLink("Inicio", "Home", "Home")</li>
-                    <li>@Html.ActionLink("Hospedaje", "Hospedaje", "Hospe")</li>
+                    @if (ViewBag.Credential.Tipo != null)
+                    {
+                        if (ViewBag.Credential.Tipo == "Administrador")
+                        {
+                            <li>@Html.ActionLink("Registrar Usuario", "Register", "Login")</li>
+                        }
+                    }
                     <li>@Html.ActionLink("Cliente", "Cliente", "Cliente")</li>
+                    <li>@Html.ActionLink("Hospedaje", "Hospedaje", "Hospe")</li>
                     <li>@Html.ActionLink("Habitacion", "Habitacion", "Habita")</li>
                     <li>@Html.ActionLink("Inventario", "Inventario", "Inve")</li>
                     <li>@Html.ActionLink("Facturacion", "Facturacion", "Factu")</li>
                     <li>@Html.ActionLink("Cuentas x Cobrar", "Cuenta", "Cuenta")</li>
-                    <li>@Html.ActionLink("SALIR", "Index", "Login", null,new { @style = "color:red;" })</li>
+                    <li>@Html.ActionLink("SALIR", "Index", "Login", null, new { @style = "color:red;" })</li>
                 </ul>
             </div>
         </div>
@@ -100,7 +107,7 @@
                     </a>
                 </li>
 
-                <li style="right:0; margin-left:182px;">
+                <li style="right:0;">
                     <a href="https://www.google.com/maps/place/Novo-Centro/18.4750235,-69.9255063,14.42z/data=!4m5!3m4!1s0x8eaf89dd603e9501:0x80f0d676dcd7ad3!8m2!3d18.4732186!4d-69.9313098?hl=es" target="_blank">
                         <div class="row">
                             <div class="col-sm-1">

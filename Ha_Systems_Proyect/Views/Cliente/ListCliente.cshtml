@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Ha_Systems_Proyect.Models.CLIENTE>
+
+@{
+    ViewBag.Title = "ListCliente";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<h4 style="text-align:center; font-weight:bold;">Listado de Clientes</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudad)
+            </td>
+            <td>
+
+                <a href="@Url.Action("EditCliente","Cliente",new { idC = item.Id_cliente })">
+
+                        <img src="@Url.Content("~/Content/img/edit.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+                    <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+                </a>
+
+                <a href="@Url.Action("DeleteCliente","Cliente",new { idC = item.Id_cliente })">
+   
+                        <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+      
+                    <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+                </a>
+
+            </td>
+        </tr>
+    }
+
+</table>
