@@ -1,33 +1,73 @@
 ﻿using Ha_Systems_Proyect.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ha_Systems_Proyect.Controllers
 {
     public class LoginController : Controller
     {
+        private HA_SYSTEMSEntities3 Modelo_Generate = new HA_SYSTEMSEntities3();
         // GET: Login
         public ActionResult Index()
         {
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Session["Data_User"] = "";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(USUARIO loginDataModel)
+        {
+
+            if (loginDataModel.Passwords != "" && loginDataModel.Usuario1 != "")
+            {
+                foreach (var item in Modelo_Generate.USUARIO.ToList())
+                {
+                    if (loginDataModel.Usuario1 == item.Usuario1 && loginDataModel.Passwords == item.Passwords)
+                    {
+                        Session["Data_User"] = item;
+                        return RedirectToAction("Home", "Home");
+                    }
+                }
+
+                ViewBag.LoginAcces = "Usuario No En contrado";
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Register()
+        {
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(LoginModel loginDataModel)
+        public ActionResult Register(USUARIO registerData)
         {
-            if (ModelState.IsValid )
+            if (ModelState.IsValid)
             {
-      
-                return RedirectToAction("Home","Home");
+                if (registerData.Passwords == registerData.Password_V)
+                {
+
+                    Modelo_Generate.USUARIO.Add(registerData);
+                    Modelo_Generate.SaveChanges();
+                    return RedirectToAction("Index", "Login");
+
+                }
+                else
+                {
+
+                    ViewBag.LoginAcces = "Contraseñas no Coinciden";
+                    return View();
+                }
+
             }
             else
             {
-                return View(loginDataModel);
+                return View();
             }
         }
 
