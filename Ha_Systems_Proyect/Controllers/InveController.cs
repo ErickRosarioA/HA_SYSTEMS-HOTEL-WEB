@@ -7,12 +7,6 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Inve
         public ActionResult Inventario()
         {
-            var userCredential = Session["Data_User"];
-            ViewBag.Credential = userCredential;
-            if (userCredential == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
             return View();
         }
     }

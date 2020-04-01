@@ -3,6 +3,33 @@
     ViewBag.Title = "Hospedaje";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (@Html.BeginForm("ClienteData", "Hospe", FormMethod.Post))
+{
+    @Html.DropDownList("Clientes", (SelectList)ViewData["Data"], "Cedulas de Clientes", new { onchange = "Action(this.value);", @class = "form-control" })
+    @Html.TextBox("name", null, new { @class = "form-control" });
+    @Html.TextBox("celular", null, new { @class = "form-control" });
+    @Html.TextBox("direccion", null, new { @class = "form-control" });
 
-<h2>Hospedaje</h2>
+}
 
+@section Scripts {
+    <script type="text/javascript">
+        function Action(Id_Cliente) {
+            $.ajax({
+                url: '@Url.Action("ClienteData", "Hospe")',
+                type: "POST",
+                data: { "Id_Cliente": Id_Cliente },
+                "success": function (data) {
+                    if (data != null) {
+                        var vdata = data;
+                        $("#name").val(vdata[0].name);
+                        $("#celular").val(vdata[0].celular);
+                        $('#direccion').val(vdata[0].direccion)
+
+                    }
+                }
+            });
+        }
+    </script>
+
+}

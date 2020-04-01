@@ -14,19 +14,13 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Cliente
         public ActionResult Cliente()
         {
-            var userCredential = Session["Data_User"];
-            ViewBag.Credential = userCredential;
-            if (userCredential == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
+           
             return View();
         }
 
         [HttpPost]
         public ActionResult Cliente(CLIENTE dataCliente)
         {
-            var userCredential = Session["Data_User"];
             if (ModelState.IsValid)
             {
                 try
@@ -45,20 +39,14 @@ namespace Ha_Systems_Proyect.Controllers
             {
                 ViewBag.error = "Existen Campos invalidos, revisar";
             }
-            ViewBag.Credential = userCredential;
-            if (userCredential == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
+  
 
             return View();
         }
 
         public ActionResult ListCliente()
         {
-            var userCredential = Session["Data_User"];
-            ViewBag.Credential = userCredential;
-            if (userCredential == null)
+            if (Session["Data_User"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
@@ -68,6 +56,7 @@ namespace Ha_Systems_Proyect.Controllers
 
         public ActionResult EditCliente(int? idC)
         {
+            
             if (idC == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -77,12 +66,7 @@ namespace Ha_Systems_Proyect.Controllers
             {
                 return HttpNotFound();
             }
-            var userCredential = Session["Data_User"];
-            ViewBag.Credential = userCredential;
-            if (userCredential == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
+
             return View(cliente);
         }
 
@@ -90,17 +74,12 @@ namespace Ha_Systems_Proyect.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditCliente(CLIENTE clienteEdit)
         {
-            var userCredential = Session["Data_User"];
+          
             if (ModelState.IsValid)
             {
                 try
                 {
-            
-                    ViewBag.Credential = userCredential;
-                    if (userCredential == null)
-                    {
-                        return RedirectToAction("Index", "Login");
-                    }
+
                     Modelo_Generate.Entry(clienteEdit).State = EntityState.Modified;
                     Modelo_Generate.SaveChanges();
                         
@@ -113,12 +92,6 @@ namespace Ha_Systems_Proyect.Controllers
 
                     ViewBag.x = c;
                 }
-            }
-
-            ViewBag.Credential = userCredential;
-            if (userCredential == null)
-            {
-                return RedirectToAction("Index", "Login");
             }
             return View(clienteEdit);
         }
@@ -136,7 +109,6 @@ namespace Ha_Systems_Proyect.Controllers
             }
             else
             {
-                var userCredential = Session["Data_User"];
                 try
                 {
                     Modelo_Generate.CLIENTE.Remove(clienteData);
@@ -146,11 +118,6 @@ namespace Ha_Systems_Proyect.Controllers
                 catch (Exception)
                 {
 
-                }
-                ViewBag.Credential = userCredential;
-                if (userCredential == null)
-                {
-                    return RedirectToAction("Index", "Login");
                 }
                 return RedirectToAction("Cliente");
             }

@@ -10,7 +10,7 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            Session["Data_User"] = "";
+            Session["Data_User"] =null;
             return View();
         }
 
