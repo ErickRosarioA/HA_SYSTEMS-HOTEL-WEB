@@ -346,7 +346,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_Login_Layout.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Hospe\Hospedaje.cshtml" />
     <Content Include="Views\Habita\Habitacion.cshtml" />
     <Content Include="Views\Inve\Inventario.cshtml" />
     <Content Include="Views\Factu\Facturacion.cshtml" />
@@ -357,6 +356,8 @@
     <Content Include="Views\Shared\_CleanLayout.cshtml" />
     <Content Include="Views\Cliente\ListCliente.cshtml" />
     <Content Include="Views\Cliente\EditCliente.cshtml" />
+    <Content Include="Views\Hospe\Hospedaje.cshtml" />
+    <Content Include="Views\Hospe\ListadoHospedaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

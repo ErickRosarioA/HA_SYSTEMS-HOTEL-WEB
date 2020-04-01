@@ -1,35 +1,102 @@
-﻿
+﻿@model Ha_Systems_Proyect.Models.HOSPEDAJE
+
 @{
     ViewBag.Title = "Hospedaje";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (@Html.BeginForm("ClienteData", "Hospe", FormMethod.Post))
-{
-    @Html.DropDownList("Clientes", (SelectList)ViewData["Data"], "Cedulas de Clientes", new { onchange = "Action(this.value);", @class = "form-control" })
-    @Html.TextBox("name", null, new { @class = "form-control" });
-    @Html.TextBox("celular", null, new { @class = "form-control" });
-    @Html.TextBox("direccion", null, new { @class = "form-control" });
 
-}
+
+<div class="sectionFormL" style="width:70% !important; position:center; float:none; margin:auto;">
+    <h4 style="text-align:center; font-weight:bold;">Aplicar Hospedaje a Clientes</h4>
+    <label style="color:red; text-align:center; font-weight:normal; width:100%;">@ViewBag.error</label>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div style="margin:2%;">
+            <div style="margin-top:3%; justify-content:center; display:flex;">
+                @Html.DropDownList("Cliente_id", (SelectList)ViewData["Data_Clientes"], "Cedulas de Clientes", new { onchange = "Action(this.value);", @class = "form-control" })
+            </div>
+            <div style="margin-top:4%; justify-content:center; display:flex; width:100%;">
+                <div class="col-sm-3">
+                    @Html.TextBox("name", null, new { @class = "form-control", disabled = "disabled", placeholder = "Nombre Cliente" })
+                </div>
+                <div class="col-sm-3">
+
+                    @Html.TextBox("celular", null, new { @class = "form-control", disabled = "disabled", placeholder = "Celular Cliente" })
+                </div>
+                <div class="col-sm-3">
+                    @Html.TextBox("direccion", null, new { @class = "form-control", disabled = "disabled", placeholder = "Direccion Cliente" })
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div style="margin-top:6%; justify-content:center; display:flex;">
+                @Html.DropDownList("Habitacion_id", (SelectList)ViewData["Data_Habi"], "Habitaciones Disponibles", new { @class = "form-control" })
+            </div>
+        </div>
+        <div style="justify-content:center; margin-top:4%; display:flex; width:100%;">
+
+
+
+            <div class="col-sm-5" style="text-align:center;">
+                <label>Fecha de Entrada</label>
+                <div class="input-group date">
+                    @Html.EditorFor(model => model.Fecha_inicio, "{0:dd-MM-yyyy}", new { htmlAttributes = new { @type="date", @class = "form-control" } })
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-sm-5" style="text-align:center;">
+                <label>Fecha de Salida</label>
+                <div class="input-group date">
+
+                    @Html.EditorFor(model => model.Fecha_fin, "{0:dd-MM-yyyy}", new { htmlAttributes = new { @type = "date", @class = "form-control " } })
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-top:6%;" class="form-group">
+            <div style=" text-align:center; display:block; ">
+                <input type="submit" value="Registrar Hospedaje" style="width:27%;" class="btn btn-primary" />
+                <input type="reset" value="Limpiar Todo" style="width:27%;" class="btn btn-danger" />
+                <input type="button" onclick="location.href='@Url.Action("ListadoHospedaje")';return false;" value="Listado de Hospedados" style="width:27%;" class="btn btn-success" />
+            </div>
+        </div>
+    }
+</div>
 
 @section Scripts {
     <script type="text/javascript">
-        function Action(Id_Cliente) {
-            $.ajax({
-                url: '@Url.Action("ClienteData", "Hospe")',
-                type: "POST",
-                data: { "Id_Cliente": Id_Cliente },
-                "success": function (data) {
-                    if (data != null) {
-                        var vdata = data;
-                        $("#name").val(vdata[0].name);
-                        $("#celular").val(vdata[0].celular);
-                        $('#direccion').val(vdata[0].direccion)
+    function Action(Id_Cliente) {
+        $.ajax({
+            url: '@Url.Action("ClienteData", "Hospe")',
+            type: "POST",
+            data: { "Id_Cliente": Id_Cliente },
+            "success": function (data) {
+                if (data != null) {
+                    var vdata = data;
+                    $("#name").val(vdata[0].name);
+                    $("#celular").val(vdata[0].celular);
+                    $('#direccion').val(vdata[0].direccion)
 
-                    }
                 }
-            });
-        }
+            }
+        });
+    }
     </script>
 
 }
