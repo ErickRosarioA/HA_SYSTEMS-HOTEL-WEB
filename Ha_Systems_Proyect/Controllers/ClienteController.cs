@@ -87,9 +87,7 @@ namespace Ha_Systems_Proyect.Controllers
                 }
                 catch (Exception err)
                 {
-
                     var c = err;
-
                     ViewBag.x = c;
                 }
             }
