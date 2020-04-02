@@ -34,13 +34,21 @@
                 </div>
                 <ul class="nav navbar-nav pull-right" style="font-weight:bold;">
                     <li>@Html.ActionLink("Inicio", "Home", "Home")</li>
-                    @if (ViewBag.Credential.Tipo != null)
+                    @using Ha_Systems_Proyect.Models
+             
+                    @if (this.Session["Data_User"] != null)
                     {
-                        if (ViewBag.Credential.Tipo == "Administrador")
+                        if ((Session["Data_User"] as USUARIO).Tipo == "Administrador")
                         {
-                            <li>@Html.ActionLink("Registrar Usuario", "Register", "Login")</li>
+                            <li>@Html.ActionLink("Registrar Usuario", "Register", "Login") </li>
                         }
                     }
+                    else
+                    {
+                        Response.Redirect(Url.Action("Index","Login"));
+                    }
+    
+
                     <li>@Html.ActionLink("Cliente", "Cliente", "Cliente")</li>
                     <li>@Html.ActionLink("Hospedaje", "Hospedaje", "Hospe")</li>
                     <li>@Html.ActionLink("Habitacion", "Habitacion", "Habita")</li>

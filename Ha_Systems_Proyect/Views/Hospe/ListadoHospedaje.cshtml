@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Ha_Systems_Proyect.Models.HOSPEDAJE>
+
+@{
+    ViewBag.Title = "ListadoHospedaje";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="sectionFormL" style="width:80% !important; position:center; padding:3%; float:none; margin:auto;">
+        <h4 style="text-align:center; font-weight:bold;"> Listados de Clientes Hospedados</h4>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CLIENTE.Nombre) Cliente
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HABITACION.Descripcion) Habitacion
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_fin)
+                </th>
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CLIENTE.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HABITACION.Descripcion)
+                    </td>
+                    <td>
+                        @Html.ValueFor(modelItem => item.Fecha_inicio, "{0:dd/MM/yyyy}")
+                    </td>
+                    <td>
+                        @Html.ValueFor(modelItem => item.Fecha_fin, "{0:dd/MM/yyyy}")
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("DeleteHospedaje","Hospe",new { idH = item.Id_hospedaje })">
+                            <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div style="margin-top:6%;" class="form-group">
+            <div style=" text-align:center; display:block; ">
+                <input type="button" onclick="location.href='@Url.Action("Hospedaje")';return false;" value="Volver a Registro de Hospedaje" style="width:40%;" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
