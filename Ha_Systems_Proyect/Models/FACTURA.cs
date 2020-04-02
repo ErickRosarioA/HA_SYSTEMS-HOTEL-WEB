@@ -21,6 +21,7 @@ namespace Ha_Systems_Proyect.Models
         }
     
         public int Codigo { get; set; }
+        public string Code_Factura { get; set; }
         public string Cliente { get; set; }
         public Nullable<int> Habitacion { get; set; }
         public string Motivo { get; set; }

@@ -9,7 +9,7 @@ namespace Ha_Systems_Proyect.Controllers
 {
     public class HabitaController : Controller
     {
-        private HA_SYSTEMSEntities3 Modelo_Generate = new HA_SYSTEMSEntities3();
+        private HA_SYSTEMSEntities4 Modelo_Generate = new HA_SYSTEMSEntities4();
         // GET: Habita
         public ActionResult Habitacion()
         {

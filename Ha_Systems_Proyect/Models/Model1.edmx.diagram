@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fb35bd8926f74f8fabc5ed08ea58bf7b" Name="Diagram1">
+      <Diagram DiagramId="53bd4ef6000d4e40928dc35f2cc66e33" Name="Diagram1">
         <EntityTypeShape EntityType="HA_SYSTEMSModel.CLIENTE" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="HA_SYSTEMSModel.CUENTA_POR_COBRAR" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HA_SYSTEMSModel.FACTURA" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
