@@ -13,10 +13,10 @@ namespace Ha_Systems_Proyect.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HA_SYSTEMSEntities4 : DbContext
+    public partial class HA_SYSTEMSEntities5 : DbContext
     {
-        public HA_SYSTEMSEntities4()
-            : base("name=HA_SYSTEMSEntities4")
+        public HA_SYSTEMSEntities5()
+            : base("name=HA_SYSTEMSEntities5")
         {
         }
     
