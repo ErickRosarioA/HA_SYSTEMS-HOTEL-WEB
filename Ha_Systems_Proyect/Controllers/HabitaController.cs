@@ -13,7 +13,7 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Habita
         public ActionResult Habitacion()
         {
-           
+
             return View();
         }
 
@@ -92,7 +92,7 @@ namespace Ha_Systems_Proyect.Controllers
 
             return View(Modelo_Generate.HABITACION.ToList());
         }
-        
+
 
 
         public ActionResult DeleteHabitacion(int? idH)
@@ -122,7 +122,7 @@ namespace Ha_Systems_Proyect.Controllers
             }
 
 
-        
+
         }
     }
 }

@@ -13,8 +13,8 @@ namespace Ha_Systems_Proyect.Controllers
         // GET: Factu
         public ActionResult Facturacion()
         {
-      
-            var listaCliente= new SelectList(Modelo_Generate.CLIENTE.ToList(), "Id_Cliente", "Cedula");
+
+            var listaCliente = new SelectList(Modelo_Generate.CLIENTE.ToList(), "Id_Cliente", "Cedula");
             var listadoHospe = new SelectList(Modelo_Generate.HOSPEDAJE.ToList(), "Id_hospedaje", "Id_hospedaje");
             ViewData["Data_Hospe"] = listadoHospe;
             ViewData["Data_Clientes"] = listaCliente;
@@ -33,7 +33,7 @@ namespace Ha_Systems_Proyect.Controllers
                     Modelo_Generate.SaveChanges();
                     return RedirectToAction("Facturacion", "Factu");
                 }
-                catch (Exception err)
+                catch (Exception)
                 {
 
                 }
@@ -133,14 +133,11 @@ namespace Ha_Systems_Proyect.Controllers
         [HttpPost]
         public ActionResult LoadData(int? Id_Cliente)
         {
-            var query = from c in Modelo_Generate.CLIENTE where c.Id_cliente == Id_Cliente join h in Modelo_Generate.HOSPEDAJE on c equals h.CLIENTE  select new { Id_Hospedaje = h.Id_hospedaje, Id_Habitacion = h.Habitacion_id,Id_Cliente = c.Id_cliente, name = c.Nombre + " " + c.Apellido, cedula = c.Cedula };
-
-
+            var query = from c in Modelo_Generate.CLIENTE where c.Id_cliente == Id_Cliente join h in Modelo_Generate.HOSPEDAJE on c equals h.CLIENTE select new { Id_Hospedaje = h.Id_hospedaje, Id_Habitacion = h.Habitacion_id, Id_Cliente = c.Id_cliente, name = c.Nombre + " " + c.Apellido, cedula = c.Cedula };
             return Json(query, JsonRequestBehavior.AllowGet);
-
         }
 
-        public ActionResult impreFactura(int? idF)
+        public ActionResult ImpreFactura(int? idF)
         {
             if (idF == null)
             {

@@ -38,7 +38,7 @@
     </div>
     @Html.ValidationMessageFor(model => model.Passwords, "", new { @class = "text-danger" })
     <div style="margin-top:1%; text-align:center; text-decoration-line:underline;">
-        <a>Olvide la   Contraseña </a>
+        <a href="@Url.Action("Register","Login")">Olvide la   Contraseña </a>
     </div>
     <br />
     <button style="width:100%; height:60px; background-color:#3399FF; border-color:#3399FF;" class="btn btn-primary" type="submit">

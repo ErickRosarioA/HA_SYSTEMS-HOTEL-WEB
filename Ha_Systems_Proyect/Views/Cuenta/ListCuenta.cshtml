@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Ha_Systems_Proyect.Models.CUENTA_POR_COBRAR>
+
+@{
+    ViewBag.Title = "ListCuenta";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<h4 style="text-align:center; font-weight:bold;">Generar Factura</h4>
+<table class="table">
+    <tr>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Cedula
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FACTURA1.Code_Factura)
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_fin)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FACTURA1.Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FACTURA1.Cedula_Cliente)
+            </td>
+            <td>
+
+
+                @Html.DisplayFor(modelItem => item.FACTURA1.Code_Factura)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.FACTURA1.Total)
+            </td>
+            <td>
+                @Html.ValueFor(modelItem => item.Fecha_inicio, "{0:dd/MM/yyyy}")
+            </td>
+            <td>
+                @Html.ValueFor(modelItem => item.Fecha_fin, "{0:dd/MM/yyyy}")
+            </td>
+
+            <td>
+            
+                <a href="@Url.Action("impreCuenta","Cuenta",new { idCu = item.Id_cuenta })">
+
+                    <img src="@Url.Content("~/Content/img/impresion.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+                    <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+                </a>
+
+
+                <a href="@Url.Action("DeleteCuenta","Cuenta",new { idCu = item.Id_cuenta })">
+
+                    <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+                    <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

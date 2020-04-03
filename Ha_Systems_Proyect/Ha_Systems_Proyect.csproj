@@ -206,6 +206,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="has_systems-queries.sql" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -347,8 +348,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_Login_Layout.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Inve\Inventario.cshtml" />
-    <Content Include="Views\Cuenta\Cuenta.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Cliente\Cliente.cshtml" />
@@ -363,7 +362,14 @@
     <Content Include="Views\Factu\Facturacion.cshtml" />
     <Content Include="Views\Factu\EditFactura.cshtml" />
     <Content Include="Views\Factu\ListFactura.cshtml" />
-    <Content Include="Views\Factu\impreFactura.cshtml" />
+    <Content Include="Views\Cuenta\Cuenta.cshtml" />
+    <Content Include="Views\Cuenta\ListCuenta.cshtml" />
+    <Content Include="Views\Inve\Inventario.cshtml" />
+    <Content Include="Views\Inve\ListInventario.cshtml" />
+    <Content Include="Views\Inve\EditInventario.cshtml" />
+    <Content Include="Views\Inve\ImpresionInventario.cshtml" />
+    <Content Include="Views\Factu\ImpreFactura.cshtml" />
+    <Content Include="Views\Cuenta\ImpreCuenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
