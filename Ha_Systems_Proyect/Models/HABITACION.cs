@@ -20,7 +20,7 @@ namespace Ha_Systems_Proyect.Models
         {
             this.HOSPEDAJE = new HashSet<HOSPEDAJE>();
         }
-    
+
         public int Id_habitacion { get; set; }
         [Required(ErrorMessage = "Este campo es requerido.")]
         public string Descripcion { get; set; }
@@ -28,7 +28,7 @@ namespace Ha_Systems_Proyect.Models
         public Nullable<int> Estado_habitacion { get; set; }
         [Required(ErrorMessage = "Este campo es requerido.")]
         public Nullable<bool> Disponibilidad { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOSPEDAJE> HOSPEDAJE { get; set; }
     }

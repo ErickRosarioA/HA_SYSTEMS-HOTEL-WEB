@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_CleanLayout.cshtml";
 }
 
-<h2>ListFactura</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h4 style="text-align:center; font-weight:bold;">Listado de Facturas</h4>
 <table class="table">
     <tr>
         <th>
@@ -19,58 +15,78 @@
             @Html.DisplayNameFor(model => model.Cliente)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Habitacion)
+            Cedula Cliente
+        </th>
+        <th>
+            No.  @Html.DisplayNameFor(model => model.Habitacion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Motivo)
         </th>
+
+        <th>
+            Fecha Generada
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Total)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_Creacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cedula_Cliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HOSPEDAJE.Id_hospedaje)
-        </th>
+
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code_Factura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Habitacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Motivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Creacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula_Cliente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HOSPEDAJE.Id_hospedaje)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Codigo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Code_Factura)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cliente)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cedula_Cliente)
+    </td>
+    <td>
+         @Html.DisplayFor(modelItem => item.Habitacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Motivo)
+    </td>
+
+    <td>
+        @Html.ValueFor(modelItem => item.Fecha_Creacion, "{0:dd/MM/yyyy}")
+    </td>
+    <td>
+       $ @Html.DisplayFor(modelItem => item.Total)
+    </td>
+
+
+    <td>
+        <a href="@Url.Action("EditFactura","Factu",new { idF = item.Codigo })">
+
+            <img src="@Url.Content("~/Content/img/edit.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+        </a>
+
+        <a href="@Url.Action("impreFactura","Factu",new { idF = item.Codigo })">
+
+            <img src="@Url.Content("~/Content/img/impresion.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+        </a>
+
+
+        <a href="@Url.Action("DeleteFactura","Factu",new { idF = item.Codigo })">
+
+            <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+        </a>
+
+    </td>
+</tr>
+    }
 
 </table>

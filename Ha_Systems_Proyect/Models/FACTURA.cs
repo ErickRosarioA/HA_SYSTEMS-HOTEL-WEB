@@ -20,7 +20,8 @@ namespace Ha_Systems_Proyect.Models
         {
             this.CUENTA_POR_COBRAR = new HashSet<CUENTA_POR_COBRAR>();
         }
-    
+
+
         public int Codigo { get; set; }
         [Required(ErrorMessage = "Este campo es requerido.")]
         public string Code_Factura { get; set; }
@@ -40,7 +41,7 @@ namespace Ha_Systems_Proyect.Models
         [StringLength(11, ErrorMessage = "No cumple con requisisto de cedula",
              MinimumLength = 11)]
         public string Cedula_Cliente { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUENTA_POR_COBRAR> CUENTA_POR_COBRAR { get; set; }
         public virtual HOSPEDAJE HOSPEDAJE { get; set; }

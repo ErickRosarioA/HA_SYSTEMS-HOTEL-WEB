@@ -21,7 +21,6 @@ namespace Ha_Systems_Proyect.Models
             this.HOSPEDAJE = new HashSet<HOSPEDAJE>();
         }
 
-
         public int Id_cliente { get; set; }
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "Este campo es requerido.")]

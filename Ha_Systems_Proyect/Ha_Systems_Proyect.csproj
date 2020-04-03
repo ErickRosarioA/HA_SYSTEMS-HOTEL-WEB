@@ -196,6 +196,7 @@
     <Content Include="Content\img\facebook.png" />
     <Content Include="Content\img\gmail.png" />
     <Content Include="Content\img\ha2.png" />
+    <Content Include="Content\img\impresion.png" />
     <Content Include="Content\img\instagram.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo2.png" />
@@ -362,6 +363,7 @@
     <Content Include="Views\Factu\Facturacion.cshtml" />
     <Content Include="Views\Factu\EditFactura.cshtml" />
     <Content Include="Views\Factu\ListFactura.cshtml" />
+    <Content Include="Views\Factu\impreFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

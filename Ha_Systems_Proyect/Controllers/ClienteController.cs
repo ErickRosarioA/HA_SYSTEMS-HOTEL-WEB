@@ -10,7 +10,7 @@ namespace Ha_Systems_Proyect.Controllers
 {
     public class ClienteController : Controller
     {
-        private HA_SYSTEMSEntities5 Modelo_Generate = new HA_SYSTEMSEntities5();
+        private HA_SYSTEMSEntities6 Modelo_Generate = new HA_SYSTEMSEntities6();
         // GET: Cliente
         public ActionResult Cliente()
         {

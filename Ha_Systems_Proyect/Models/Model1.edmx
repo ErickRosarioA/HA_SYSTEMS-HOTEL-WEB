@@ -32,8 +32,8 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code_Factura" Type="varchar" MaxLength="7" />
-          <Property Name="Cliente" Type="varchar" MaxLength="1" />
+          <Property Name="Code_Factura" Type="varchar" MaxLength="10" />
+          <Property Name="Cliente" Type="varchar" MaxLength="100" />
           <Property Name="Habitacion" Type="int" />
           <Property Name="Motivo" Type="varchar" MaxLength="100" />
           <Property Name="Hospedaje_fk" Type="int" />
@@ -218,8 +218,8 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code_Factura" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
-          <Property Name="Cliente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Factura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Habitacion" Type="Int32" />
           <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Hospedaje_fk" Type="Int32" />
@@ -348,7 +348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HA_SYSTEMSEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HA_SYSTEMSEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="CUENTA_POR_COBRAR" EntityType="Self.CUENTA_POR_COBRAR" />
           <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
@@ -383,7 +383,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HA_SYSTEMSModelStoreContainer" CdmEntityContainer="HA_SYSTEMSEntities5">
+        <EntityContainerMapping StorageEntityContainer="HA_SYSTEMSModelStoreContainer" CdmEntityContainer="HA_SYSTEMSEntities6">
           <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
