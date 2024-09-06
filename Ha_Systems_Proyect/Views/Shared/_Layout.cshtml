@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <LINK REL=StyleSheet HREF="~/Content/css/style.css" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="~/Content/Site.css" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="~/Content/bootstrap.min.css.map" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="~/Content/bootstrap.css.map" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="~/Content/bootstrap.css" TYPE="text/css" MEDIA=screen>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -35,7 +40,7 @@
                 <ul class="nav navbar-nav pull-right" style="font-weight:bold;">
                     <li>@Html.ActionLink("Inicio", "Home", "Home")</li>
                     @using Ha_Systems_Proyect.Models
-             
+
                     @if (this.Session["Data_User"] != null)
                     {
                         if ((Session["Data_User"] as USUARIO).Tipo == "Administrador")
@@ -45,13 +50,13 @@
                     }
                     else
                     {
-                        Response.Redirect(Url.Action("Index","Login"));
+                        Response.Redirect(Url.Action("Index", "Login"));
                     }
-    
+
 
                     <li>@Html.ActionLink("Cliente", "Cliente", "Cliente")</li>
-                    <li>@Html.ActionLink("Hospedaje", "Hospedaje", "Hospe")</li>
                     <li>@Html.ActionLink("Habitacion", "Habitacion", "Habita")</li>
+                    <li>@Html.ActionLink("Hospedaje", "Hospedaje", "Hospe")</li>
                     <li>@Html.ActionLink("Inventario", "Inventario", "Inve")</li>
                     <li>@Html.ActionLink("Facturacion", "Facturacion", "Factu")</li>
                     <li>@Html.ActionLink("Cuentas x Cobrar", "Cuenta", "Cuenta")</li>

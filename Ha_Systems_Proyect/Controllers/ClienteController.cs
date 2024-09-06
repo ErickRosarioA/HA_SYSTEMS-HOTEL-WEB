@@ -3,18 +3,17 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Data.Entity.Infrastructure;
 using System.Web.Mvc;
 
 namespace Ha_Systems_Proyect.Controllers
 {
     public class ClienteController : Controller
     {
-        private HA_SYSTEMSEntities3 Modelo_Generate = new HA_SYSTEMSEntities3();
+        private HA_SYSTEMSEntities6 Modelo_Generate = new HA_SYSTEMSEntities6();
         // GET: Cliente
         public ActionResult Cliente()
         {
-           
+
             return View();
         }
 
@@ -39,7 +38,7 @@ namespace Ha_Systems_Proyect.Controllers
             {
                 ViewBag.error = "Existen Campos invalidos, revisar";
             }
-  
+
 
             return View();
         }
@@ -56,7 +55,7 @@ namespace Ha_Systems_Proyect.Controllers
 
         public ActionResult EditCliente(int? idC)
         {
-            
+
             if (idC == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -74,7 +73,7 @@ namespace Ha_Systems_Proyect.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditCliente(CLIENTE clienteEdit)
         {
-          
+
             if (ModelState.IsValid)
             {
                 try
@@ -82,14 +81,12 @@ namespace Ha_Systems_Proyect.Controllers
 
                     Modelo_Generate.Entry(clienteEdit).State = EntityState.Modified;
                     Modelo_Generate.SaveChanges();
-                        
-                  return RedirectToAction("Cliente");
+
+                    return RedirectToAction("Cliente");
                 }
                 catch (Exception err)
                 {
-
                     var c = err;
-
                     ViewBag.x = c;
                 }
             }
@@ -121,7 +118,7 @@ namespace Ha_Systems_Proyect.Controllers
                 }
                 return RedirectToAction("Cliente");
             }
-        
+
         }
 
     }

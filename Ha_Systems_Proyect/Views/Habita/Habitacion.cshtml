@@ -1,8 +1,61 @@
-﻿
+﻿@model Ha_Systems_Proyect.Models.HABITACION
+
 @{
     ViewBag.Title = "Habitacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Habitacion</h2>
+    <div class="sectionFormL" style="width:70% !important; position:center; float:none; margin:auto;">
+        <h4 style="text-align:center; font-weight:bold;">Agregar Nueva Habitacion</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div style=" margin-top:3%; justify-content:center; display:flex;">
+                
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+     
+                <div class="col-md-3">
+                    <select id="Descripcion" name="Descripcion" class="form-control">
+                        <option value=null>Descripcion</option>
+                        <option value="Habitacion Normal">Habitacion Normal</option>
+                        <option value="Habitacion Doble">Habitacion Doble</option>
+                        <option value="Habitacion Triple">Habitacion Triple</option>
+                    </select>
+                </div>
+ 
+                    <div class="col-md-3">
+                        <select id="Estado_habitacion" name="Estado_habitacion" class="form-control">
+                            <option value="2">Estado Fisico</option>
+                            <option value="0">Arreglada</option>
+                            <option value="1">Sucia</option>
+                        </select>   
+                    </div>
 
+                    <div class="col-md-3">
+                        <select id="Disponibilidad" name="Disponibilidad" class="form-control">
+                            <option value="true">Disponibilidad</option>
+                            <option value="true">Disponible</option>
+                            <option value="false">No Disponible</option>
+                        </select>
+                    </div>
+   
+
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="Agregar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+           
+        }
+
+        <hr style=" border: 0; border-top: 1px solid black;"/>
+    <div style="margin-top:2%; padding:1%;">
+        @{Html.RenderAction("ListHabitacion", "Habita");}
+    </div>
+
+    </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

@@ -1,0 +1,96 @@
+﻿@model Ha_Systems_Proyect.Models.FACTURA
+@using Ha_Systems_Proyect.Models
+
+@{
+    ViewBag.Title = "impreFactura";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<div class="sectionFormL" style="width:60% !important; height:auto; padding:1%; position:center; float:none; margin:auto;">
+    <h4 style="text-align:center; font-weight:bold;">HA_SYSTEMS SOFTWARES</h4>
+    <div style="text-align:center;">------------------------------------------------------------------------------  </div>
+    <div style="text-align:center; width:100%; font-weight:bold;">Detalles de Factura</div>
+    <dl class="horizontal" style="text-align:center; margin-top:20px;">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code_Factura):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code_Factura)
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            @Html.DisplayNameFor(model => model.Cliente):
+        </dt>
+
+        <dd style="margin-top:10px;">
+            @Html.DisplayFor(model => model.Cliente)
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            @Html.DisplayNameFor(model => model.Cedula_Cliente):
+        </dt>
+
+        <dd style="margin-top:10px;">
+            @Html.DisplayFor(model => model.Cedula_Cliente)
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            @Html.DisplayNameFor(model => model.Habitacion):
+        </dt>
+
+        <dd style="margin-top:10px;">
+            @Html.DisplayFor(model => model.HOSPEDAJE.HABITACION.Descripcion)
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            Numero de Hospedaje:
+        </dt>
+
+        <dd style="margin-top:10px;">
+            @Html.DisplayFor(model => model.HOSPEDAJE.Id_hospedaje)
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            @Html.DisplayNameFor(model => model.Motivo):
+        </dt>
+
+        <dd style="margin-top:10px;">
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            Fecha de Factura:
+        </dt>
+
+        <dd style="margin-top:10px;">
+            @Html.ValueFor(modelItem => modelItem.Fecha_Creacion, "{0:dd/MM/yyyy}")
+            <div style="text-align:center; margin-top:10px;">  ------------------------------------------------------------------------------</div>
+        </dd>
+
+        <dt style="margin-top:10px;">
+            <br />
+            @Html.DisplayNameFor(model => model.Total):
+        </dt>
+
+        <dd style="margin-top:10px; color:red;">
+            $ @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+    <div style="text-align:center;">
+        <label> Atendido por:  </label>
+        @((Session["Data_User"] as USUARIO).Nombre)
+    </div>
+</div>
+
+<div style="display:flex; text-align:center; width:100%; justify-content:center; margin-top:20px;">
+    <input type="button" onclick="location.href='@Url.Action("Facturacion")';return false;" value="Regresar" style="width:12%; margin:1%;" class="btn btn-success" />
+    <input type="button" onclick="javascript: window.print()" return false;" value="Impresion" style="width:12%; margin:1%;" class="btn btn-danger" />
+
+</div>

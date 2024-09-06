@@ -1,8 +1,134 @@
-﻿
+﻿@model Ha_Systems_Proyect.Models.FACTURA
+
 @{
     ViewBag.Title = "Facturacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Facturacion</h2>
 
+    <div class="sectionFormL" style="width:33%; padding:1%;">
+        <h4 style="text-align:center; font-weight:bold;">Generar Factura</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div style="justify-content:center; margin:4%; display:flex;">
+                @Html.DropDownList("Clientes_Search", (SelectList)ViewData["Data_Clientes"], "Buscar Cliente", new { onchange = "Action(this.value);", @class = "form-control" })
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Codigo</label>
+                    @Html.EditorFor(model => model.Code_Factura, new { htmlAttributes = new { @id="Code_Factura" ,@class = "form-control", @readonly = true } })
+                </div>
+
+
+                <div class="col-md-6">
+                    <label>Cliente</label>
+                    @Html.EditorFor(model => model.Cliente, new { htmlAttributes = new { @id = "Cliente", @class = "form-control", @readonly = true } })
+                </div>
+
+
+                <div class="col-md-6" style="margin-top:20px;">
+                    <label>Cedula Cliente</label>
+                    @Html.EditorFor(model => model.Cedula_Cliente, new { htmlAttributes = new { @id = "Cedula_Cliente", @class = "form-control", @readonly = true } })
+                </div>
+
+                <div class="col-md-6" style="margin-top:20px;">
+                    <label>No. Habitacion</label>
+                    @Html.EditorFor(model => model.Habitacion, new { htmlAttributes = new { @id = "Habitacion", @class = "form-control", @readonly = true } })
+                </div>
+
+
+
+                <div class="col-md-6" style="margin-top:20px;">
+                    <label>Motivo Factura</label>
+                    <select id="Motivo" name="Motivo" class="form-control" title="Servicio del Hotel">
+                        <option value="Habitacion">Habitacion</option>
+                        <option value="Desayuno">Desayuno</option>
+                        <option value="Bebida">Bebida</option>
+                        <option value="Almuerzo">Almuerzo</option>
+                        <option value="Cena">Cena</option>
+                        <option value="Diversion">Diversion</option>
+                    </select>
+
+                </div>
+
+                <div class="col-md-6" style="margin-top:20px;">
+                    <label>No. Hospedaje</label>
+                    @Html.DropDownList("Hospedaje_fk", (SelectList)ViewData["Data_Hospe"], htmlAttributes: new { @id = "Hospedaje_fk", @class = "form-control", @readonly = true })
+                </div>
+
+                <div class="col-md-6" style="margin-top:20px;">
+                    <label>Fecha Factura</label>
+                    @Html.EditorFor(model => model.Fecha_Creacion, new { htmlAttributes = new {@id= "Fecha_Creacion", @class = "form-control", @type = "datetime" , @readonly= true} })
+                </div>
+
+                <div class="col-md-6" style="margin-top:20px;">
+                    <label>Total</label>
+                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+
+            </div>
+
+            <div style="margin:4%;" class="form-group">
+                <div style=" text-align:center; display:block; ">
+                    <input type="submit" style="width:40%;" value="Agregar" class="btn btn-primary" />
+                    <input type="reset" style="width:40%;" value="Limpiar Campos" class="btn btn-danger" />
+                </div>
+            </div>
+        }
+
+    </div>
+<div class="sectionFormR" style="width:66%;">
+    @{Html.RenderAction("ListFactura", "Factu");}
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            caracteres = "0123456789FG";
+            longitud = 6;
+            $("#Code_Factura").val("RC-" + rand_code(caracteres, longitud));
+
+            var d = new Date();
+            var dia = d.getDate();
+            var mes = ("0" + (d.getMonth() + 1));
+            var anio = d.getFullYear();
+            var fechatotal = dia + "/" + mes + "/" + anio
+            $("#Fecha_Creacion").val(fechatotal);
+        });
+
+
+        function rand_code(chars, lon) {
+            code = "";
+            for (x = 0; x < lon; x++) {
+                rand = Math.floor(Math.random() * chars.length);
+                code += chars.substr(rand, 1);
+            }
+            return code;
+        }
+
+
+
+
+    function Action(Id_Cliente) {
+        $.ajax({
+            url: '@Url.Action("LoadData", "Factu")',
+            type: "POST",
+            data: { "Id_Cliente": Id_Cliente },
+            "success": function (data) {
+                if (data != null) {
+                    var vdata = data;
+                    $("#Cliente").val(vdata[0].name);
+                    $("#Cedula_Cliente").val(vdata[0].cedula);
+                    $("#Hospedaje_fk").val(vdata[0].Id_Hospedaje);
+                    $("#Habitacion").val(vdata[0].Id_Habitacion);
+
+                }
+            }
+        });
+    }
+    </script>
+
+}

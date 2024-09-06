@@ -1,0 +1,61 @@
+﻿@model Ha_Systems_Proyect.Models.HABITACION
+
+@{
+    ViewBag.Title = "EditHabitacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="sectionFormL" style="width:40% !important; position:center; float:none; margin:auto;">
+        <h4 style="text-align:center; font-weight:bold;">Editar Datos de esta Habitacion</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div  class="form-horizontal" >
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id_habitacion)
+
+                <div class="form-group" style=" margin-top:10%; justify-content:center; display:flex;">
+                    <div class="col-md-10">
+                        <select id="Descripcion" name="Descripcion" class="form-control">
+                            <option value=null>Descripcion</option>
+                            <option value="Habitacion Normal">Habitacion Normal</option>
+                            <option value="Habitacion Doble">Habitacion Doble</option>
+                            <option value="Habitacion Triple">Habitacion Triple</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:20%; justify-content:center; display:flex;">
+                    <div class="col-md-10" >
+                        <select id="Estado_habitacion" name="Estado_habitacion" class="form-control">
+                            <option value="2">Estado Fisico</option>
+                            <option value="0">Arreglada</option>
+                            <option value="1">Sucia</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:20%; justify-content:center; display:flex;">
+                    <div class="col-md-10" >
+                        <select id="Disponibilidad" name="Disponibilidad" class="form-control">
+                            <option value="true">Disponibilidad</option>
+                            <option value="true">Disponible</option>
+                            <option value="false">No Disponible</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;" class="form-group">
+                    <div style=" text-align:center; display:block; ">
+                        <input type="submit" value="Modificar" style="width:27%;" class="btn btn-primary" />
+                        <input type="button" onclick="location.href='@Url.Action("Habitacion")';return false;" value="Regresar" style="width:27%;" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

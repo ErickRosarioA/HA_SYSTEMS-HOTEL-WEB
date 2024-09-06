@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Ha_Systems_Proyect.Models.INVENTARIO>
+
+@{
+    ViewBag.Title = "ListInventario";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+<h4 style="text-align:center; font-weight:bold; ">Listado de Inventario</h4>
+<table class="table" style="margin-top:3%; background-color:white;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Asignacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ubicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asignacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+
+            <a href="@Url.Action("EditInventario","Inve",new { idI = item.Id_inventario })">
+
+                <img src="@Url.Content("~/Content/img/edit.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            </a>
+
+            <a href="@Url.Action("ImpresionInventario","Inve",new {  idI = item.Id_inventario })">
+
+                <img src="@Url.Content("~/Content/img/impresion.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            </a>
+            <a href="@Url.Action("DeleteInventario","Inve",new {  idI = item.Id_inventario })">
+
+                <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            </a>
+
+        </td>
+    </tr>
+}
+
+</table>

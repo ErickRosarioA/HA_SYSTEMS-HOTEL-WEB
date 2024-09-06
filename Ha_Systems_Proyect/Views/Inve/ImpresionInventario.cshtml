@@ -1,0 +1,77 @@
+﻿@model Ha_Systems_Proyect.Models.INVENTARIO
+@using Ha_Systems_Proyect.Models
+@{
+    ViewBag.Title = "ImpresionInventario";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+<div class="sectionFormL" style="width:60% !important; height:auto; padding:1%; position:center; float:none; margin:auto;">
+    <h4 style="text-align:center; font-weight:bold;">HA_SYSTEMS SOFTWARES</h4>
+    <div style="text-align:center;">------------------------------------------------------------------------------  </div>
+    <div style="text-align:center; width:100%; font-weight:bold;">Detalles de Inventario</div>
+    <dl class="horizontal" style="text-align:center; margin-top:20px;">
+        <dt>
+            @Html.DisplayNameFor(model => model.Asignacion):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asignacion)
+        </dd>
+
+        <dt>
+            <br />
+            @Html.DisplayNameFor(model => model.Ubicacion):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion)
+        </dd>
+
+        <dt>
+            <br />
+            @Html.DisplayNameFor(model => model.Descripcion):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt>
+            <br />
+            @Html.DisplayNameFor(model => model.Marca):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            <br />
+            Numero de Serie:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_serie)
+        </dd>
+
+
+        <dt>
+            <br/>
+            @Html.DisplayNameFor(model => model.Cantidad):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+    </dl>
+    <div style="text-align:center;">------------------------------------------------------------------------------  </div>
+
+    <div style="text-align:center;">
+        <label> Atendido por:  </label>
+        @((Session["Data_User"] as USUARIO).Nombre)
+    </div>
+
+</div>
+<div style="display:flex; text-align:center; width:100%; justify-content:center; margin-top:20px;">
+    <input type="button" onclick="location.href='@Url.Action("Inventario")';return false;" value="Regresar" style="width:12%; margin:1%;" class="btn btn-success" />
+    <input type="button" onclick="javascript: window.print()" return false;" value="Impresion" style="width:12%; margin:1%;" class="btn btn-danger" />
+</div>

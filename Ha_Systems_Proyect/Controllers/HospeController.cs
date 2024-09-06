@@ -9,16 +9,16 @@ namespace Ha_Systems_Proyect.Controllers
 {
     public class HospeController : Controller
     {
-        private HA_SYSTEMSEntities3 Modelo_Generate = new HA_SYSTEMSEntities3();
+        private HA_SYSTEMSEntities6 Modelo_Generate = new HA_SYSTEMSEntities6();
         // GET: Hospe
         public ActionResult Hospedaje()
         {
-            var listadoClientes = new SelectList(Modelo_Generate.CLIENTE.ToList(),"Id_Cliente", "Cedula");
+            var listadoClientes = new SelectList(Modelo_Generate.CLIENTE.ToList(), "Id_Cliente", "Cedula");
             var modeloH = (from p in Modelo_Generate.HABITACION
-                               where p.Disponibilidad == true
-                               select p).ToList();
+                           where p.Disponibilidad == true
+                           select p).ToList();
             var listadoHabi = new SelectList(modeloH, "Id_habitacion", "Descripcion");
-            ViewData["Data_Clientes"]= listadoClientes;
+            ViewData["Data_Clientes"] = listadoClientes;
             ViewData["Data_Habi"] = listadoHabi;
 
             return View();
@@ -29,10 +29,10 @@ namespace Ha_Systems_Proyect.Controllers
         {
             if (ModelState.IsValid)
             {
-              
+
                 try
                 {
-                    HABITACION HabitacionSelect= Modelo_Generate.HABITACION.Find(hospedaje.Habitacion_id);
+                    HABITACION HabitacionSelect = Modelo_Generate.HABITACION.Find(hospedaje.Habitacion_id);
                     HabitacionSelect.Disponibilidad = false;
                     Modelo_Generate.Entry(HabitacionSelect).State = EntityState.Modified;
                     Modelo_Generate.HOSPEDAJE.Add(hospedaje);
@@ -92,7 +92,7 @@ namespace Ha_Systems_Proyect.Controllers
         [HttpPost]
         public ActionResult ClienteData(int? Id_Cliente)
         {
-            var query = from c in Modelo_Generate.CLIENTE where c.Id_cliente == Id_Cliente select new { Id_Cliente = c.Id_cliente, name = c.Nombre + " " + c.Apellido, celular = c.Celular , direccion=c.Direccion };
+            var query = from c in Modelo_Generate.CLIENTE where c.Id_cliente == Id_Cliente select new { Id_Cliente = c.Id_cliente, name = c.Nombre + " " + c.Apellido, celular = c.Celular, direccion = c.Direccion };
 
             return Json(query, JsonRequestBehavior.AllowGet);
 

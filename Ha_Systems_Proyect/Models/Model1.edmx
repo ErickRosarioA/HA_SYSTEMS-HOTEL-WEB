@@ -32,11 +32,14 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cliente" Type="varchar" MaxLength="1" />
+          <Property Name="Code_Factura" Type="varchar" MaxLength="10" />
+          <Property Name="Cliente" Type="varchar" MaxLength="100" />
           <Property Name="Habitacion" Type="int" />
           <Property Name="Motivo" Type="varchar" MaxLength="100" />
           <Property Name="Hospedaje_fk" Type="int" />
           <Property Name="Total" Type="int" />
+          <Property Name="Fecha_Creacion" Type="date" />
+          <Property Name="Cedula_Cliente" Type="varchar" MaxLength="11" />
         </EntityType>
         <EntityType Name="HABITACION">
           <Key>
@@ -215,11 +218,14 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cliente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Factura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Habitacion" Type="Int32" />
           <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Hospedaje_fk" Type="Int32" />
           <Property Name="Total" Type="Int32" />
+          <Property Name="Fecha_Creacion" Type="DateTime" Precision="0" />
+          <Property Name="Cedula_Cliente" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CUENTA_POR_COBRAR" Relationship="Self.Factura_fK" FromRole="FACTURA" ToRole="CUENTA_POR_COBRAR" />
           <NavigationProperty Name="HOSPEDAJE" Relationship="Self.Hospedaje_fK" FromRole="FACTURA" ToRole="HOSPEDAJE" />
         </EntityType>
@@ -342,7 +348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HA_SYSTEMSEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HA_SYSTEMSEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="CUENTA_POR_COBRAR" EntityType="Self.CUENTA_POR_COBRAR" />
           <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
@@ -377,7 +383,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HA_SYSTEMSModelStoreContainer" CdmEntityContainer="HA_SYSTEMSEntities3">
+        <EntityContainerMapping StorageEntityContainer="HA_SYSTEMSModelStoreContainer" CdmEntityContainer="HA_SYSTEMSEntities6">
           <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
@@ -406,11 +412,14 @@
             <EntityTypeMapping TypeName="HA_SYSTEMSModel.FACTURA">
               <MappingFragment StoreEntitySet="FACTURA">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Code_Factura" ColumnName="Code_Factura" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="Habitacion" ColumnName="Habitacion" />
                 <ScalarProperty Name="Motivo" ColumnName="Motivo" />
                 <ScalarProperty Name="Hospedaje_fk" ColumnName="Hospedaje_fk" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+                <ScalarProperty Name="Cedula_Cliente" ColumnName="Cedula_Cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

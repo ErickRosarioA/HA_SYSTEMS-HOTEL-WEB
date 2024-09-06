@@ -11,7 +11,8 @@ namespace Ha_Systems_Proyect.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class HABITACION
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,15 @@ namespace Ha_Systems_Proyect.Models
         {
             this.HOSPEDAJE = new HashSet<HOSPEDAJE>();
         }
-    
+
         public int Id_habitacion { get; set; }
+        [Required(ErrorMessage = "Este campo es requerido.")]
         public string Descripcion { get; set; }
+        [Required(ErrorMessage = "Este campo es requerido.")]
         public Nullable<int> Estado_habitacion { get; set; }
+        [Required(ErrorMessage = "Este campo es requerido.")]
         public Nullable<bool> Disponibilidad { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOSPEDAJE> HOSPEDAJE { get; set; }
     }

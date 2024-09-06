@@ -7,7 +7,7 @@ namespace Ha_Systems_Proyect.Controllers
         public ActionResult Home()
         {
 
-          
+
             return View();
         }
     }

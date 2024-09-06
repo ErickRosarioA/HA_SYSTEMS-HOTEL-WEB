@@ -1,0 +1,76 @@
+﻿@model Ha_Systems_Proyect.Models.CUENTA_POR_COBRAR
+@using Ha_Systems_Proyect.Models
+@{
+    ViewBag.Title = "impreCuenta";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<div class="sectionFormL" style="width:60% !important; height:auto; padding:1%; position:center; float:none; margin:auto;">
+    <h4 style="text-align:center; font-weight:bold;">HA_SYSTEMS SOFTWARES</h4>
+    <div style="text-align:center;">------------------------------------------------------------------------------  </div>
+    <div style="text-align:center; font-weight:bold; width:100%;">Detalles de Cuenta por Cobrar</div>
+    <dl class="horizontal" style="text-align:center; margin-top:20px;">
+        <dt>
+            Nombre del Cliente:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FACTURA1.Cliente)
+        </dd>
+        <dt>
+            <br />
+            Cedula del Cliente:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FACTURA1.Cedula_Cliente)
+        </dd>
+        <dt>
+            <br />
+            Codigo de Factura:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FACTURA1.Code_Factura)
+        </dd>
+
+        <dt>
+            <br />
+            Precio de la Factura:
+        </dt>
+
+        <dd>
+            $ @Html.DisplayFor(model => model.FACTURA1.Total)
+        </dd>
+        <dt>
+            <br />
+            Fecha de Inicio:
+        </dt>
+
+        <dd>
+            @Html.ValueFor(model => model.Fecha_inicio, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            <br />
+            Fecha de Finalizacion:
+        </dt>
+
+        <dd>
+            @Html.ValueFor(model => model.Fecha_fin, "{0:dd/MM/yyyy}")
+        </dd>
+
+    </dl>
+    <div style="text-align:center; margin-top:10px;">  ------------------------------------------------------------------------------</div>
+
+    <div style="text-align:center;">
+        <label> Atendido por:  </label>
+        @((Session["Data_User"] as USUARIO).Nombre)
+    </div>
+</div>
+
+<div style="display:flex; text-align:center; width:100%; justify-content:center; margin-top:20px;">
+    <input type="button" onclick="location.href='@Url.Action("Cuenta")';return false;" value="Regresar" style="width:12%; margin:1%;" class="btn btn-success" />
+    <input type="button" onclick="javascript: window.print()" return false;" value="Impresion" style="width:12%; margin:1%;" class="btn btn-danger" />
+
+</div>

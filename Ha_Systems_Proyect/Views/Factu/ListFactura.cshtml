@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Ha_Systems_Proyect.Models.FACTURA>
+
+@{
+    ViewBag.Title = "ListFactura";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<h4 style="text-align:center; font-weight:bold;">Listado de Facturas</h4>
+<table class="table" style="background-color:white;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code_Factura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            Cedula Cliente
+        </th>
+        <th>
+            No.  @Html.DisplayNameFor(model => model.Habitacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+
+        <th>
+            Fecha Generada
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Code_Factura)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cliente)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cedula_Cliente)
+    </td>
+    <td>
+         @Html.DisplayFor(modelItem => item.Habitacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Motivo)
+    </td>
+
+    <td>
+        @Html.ValueFor(modelItem => item.Fecha_Creacion, "{0:dd/MM/yyyy}")
+    </td>
+    <td>
+       $ @Html.DisplayFor(modelItem => item.Total)
+    </td>
+
+
+    <td>
+        <a href="@Url.Action("EditFactura","Factu",new { idF = item.Codigo })">
+
+            <img src="@Url.Content("~/Content/img/edit.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+        </a>
+
+        <a href="@Url.Action("impreFactura","Factu",new { idF = item.Codigo })">
+
+            <img src="@Url.Content("~/Content/img/impresion.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+        </a>
+
+
+        <a href="@Url.Action("DeleteFactura","Factu",new { idF = item.Codigo })">
+
+            <img src="@Url.Content("~/Content/img/Delete.png")" style="margin:auto; top:0; left:0; bottom:0; position:relative;" width="20" height="20" />
+
+            <!--<div style="height:100%; margin-top:50px;  margin-left:30px; color:#3399FF; float:right; font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight:bold;">ViewBag.Page</div> -->
+        </a>
+
+    </td>
+</tr>
+    }
+
+</table>

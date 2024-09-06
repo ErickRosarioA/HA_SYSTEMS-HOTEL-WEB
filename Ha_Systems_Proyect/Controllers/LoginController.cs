@@ -6,11 +6,11 @@ namespace Ha_Systems_Proyect.Controllers
 {
     public class LoginController : Controller
     {
-        private HA_SYSTEMSEntities3 Modelo_Generate = new HA_SYSTEMSEntities3();
+        private HA_SYSTEMSEntities6 Modelo_Generate = new HA_SYSTEMSEntities6();
         // GET: Login
         public ActionResult Index()
         {
-            Session["Data_User"] =null;
+            Session["Data_User"] = null;
             return View();
         }
 
